@@ -46,6 +46,21 @@
 	    
 	</dependencies>
 	
+	<build>
+		<!-- 产生构件的文件名 -->
+		<finalName>sadasen-account</finalName>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
 	<repositories>
 	    <repository>
 	        <id>spring-milestones</id>
@@ -56,4 +71,17 @@
 	        </snapshots>
 	    </repository>
 	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>http://repo.spring.io/snapshot</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>http://repo.spring.io/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
