@@ -9,7 +9,9 @@ public class User {
 	
 	private long id;
 	private String userName;
+	private String nickName;
 	private String password;
+	private String regTime;
 
 	public User() {
 	}
@@ -30,12 +32,28 @@ public class User {
 		this.userName = userName;
 	}
 
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRegTime() {
+		return regTime;
+	}
+
+	public void setRegTime(String regTime) {
+		this.regTime = regTime;
 	}
 	
 }
