@@ -14,34 +14,47 @@
 	<properties>
 		<hikariCP.version>2.7.4</hikariCP.version>
 		<mysql.version>6.0.6</mysql.version>
+		<beetl.version>1.1.33.RELEASE</beetl.version>
 	</properties>
 	
 	<dependencies>
+	
 		<!-- web项目的依赖 -->
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-web</artifactId>
 	    </dependency>
+	    
 	    <!-- 开发时使用，支持热部署 -->
 	    <dependency>
 	    	<groupId>org.springframework.boot</groupId>
 	    	<artifactId>spring-boot-devtools</artifactId>
 	    	<optional>true</optional>
 	    </dependency>
+	    
 	    <!-- 集成spring data jpa -->
 	    <dependency>
 	    	<groupId>org.springframework.boot</groupId>
 	    	<artifactId>spring-boot-starter-data-jpa</artifactId>
 	    </dependency>
+	    
 	    <!-- HikariCP数据源 -->
 	    <dependency>
 	    	<groupId>com.zaxxer</groupId>
 	    	<artifactId>HikariCP</artifactId>
 	    </dependency>
+	    
 	    <!-- mysql驱动包 -->
 	    <dependency>
 	    	<groupId>mysql</groupId>
 	    	<artifactId>mysql-connector-java</artifactId>
+	    </dependency>
+	    
+	    <!-- ibeet-sql集成 -->
+	    <dependency>
+	    	<groupId>com.ibeetl</groupId>
+	    	<artifactId>beetl-framework-starter</artifactId>
+	    	<version>${beetl.version}</version>
 	    </dependency>
 	    
 	</dependencies>
