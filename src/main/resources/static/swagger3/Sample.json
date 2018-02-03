@@ -1,0 +1,8 @@
+{
+	"swagger" : "2.0",
+	"info" : {
+		"description" : "记账系统接口测试",
+		"version" : "1.0.1",
+		"title" : "记账系统接口"
+	}
+}
