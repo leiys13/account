@@ -1,9 +1,9 @@
 CREATE TABLE sys_user (
 	id bigint(11) primary key AUTO_INCREMENT,
-	userName varchar(30) not null,
-	nickName varchar(30) default null,
+	user_name varchar(30) not null,
+	nick_name varchar(30) default null,
 	password varchar(50) not null,
-	regTime datetime not null
+	reg_time datetime default null
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 
 alter table sys_user AUTO_INCREMENT=11328156;
