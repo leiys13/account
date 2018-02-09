@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>同行分析</title>
+<meta charset="utf-8"/>
+<script src="jquery-1.8.3.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$.getJSON ("peer.json", function (data) {  
+			var personList = data.data.peerResult;
+			var list = $("#list");
+			for(var i=0;i<personList.length;i++) {
+				list.append("<div>");
+				list.append("<div><img src='"+personList[i].faceUrl+"' /></div>");
+				list.append("<span>同行次数："+personList[i].eventTimes+"次  ---  采集图片："+personList[i].faceNum+"张");
+				list.append("<hr>");
+				var events = personList[i].events;
+				for(var j=0;j<events.length;j++) {
+					list.append("<p>"+datetimeFormat_2(events[j].startTime)+ " - " +datetimeFormat_2(events[j].endTime) + "   摄像头"+events[j].cameraName +"</p>");
+					list.append("<img src='"+events[j].faceUrl+"' />");
+					list.append("-------------------");
+					var peerFace = events[j].peerFace;
+					for(var k=0;k<peerFace.length;k++) {
+						list.append("<img src='"+peerFace[k].faceUrl+"' />");
+						list.append("<label>"+datetimeFormat_2(peerFace[k].time)+ "相似度：" +peerFace[k].confidence +"</label>");
+					}
+					list.append("<br>");
+				}
+				list.append("</div>");
+				list.append("<hr>");
+				list.append("<hr>");
+				list.append("<hr>");
+				list.append("<hr>");
+			}
+        });  
+	});
+	
+	function datetimeFormat_2(longTypeDate){  
+	    var datetimeType = "";  
+	    var date = new Date();  
+	    date.setTime(longTypeDate);
+	    datetimeType = date.getFullYear()+"-"+getMonth(date)+"-"+getDay(date)+"&nbsp;"+getHours(date)+":"+getMinutes(date)+":"+getSeconds(date);//yyyy-MM-dd 00:00:00格式日期
+	    return datetimeType;
+	}
+	
+	function getMonth(date){  
+	    var month = "";  
+	    month = date.getMonth() + 1; //getMonth()得到的月份是0-11  
+	    if(month<10){  
+	        month = "0" + month;  
+	    }  
+	    return month;  
+	}  
+	//返回01-30的日期  
+	function getDay(date){  
+	    var day = "";  
+	    day = date.getDate();  
+	    if(day<10){  
+	        day = "0" + day;  
+	    }  
+	    return day;  
+	}
+	//返回小时
+	function getHours(date){
+	    var hours = "";
+	    hours = date.getHours();
+	    if(hours<10){  
+	        hours = "0" + hours;  
+	    }  
+	    return hours;  
+	}
+	//返回分
+	function getMinutes(date){
+	    var minute = "";
+	    minute = date.getMinutes();
+	    if(minute<10){  
+	        minute = "0" + minute;  
+	    }  
+	    return minute;  
+	}
+	//返回秒
+	function getSeconds(date){
+	    var second = "";
+	    second = date.getSeconds();
+	    if(second<10){  
+	        second = "0" + second;  
+	    }  
+	    return second;  
+	}
+</script>
+</head>
+
+<body>
+<div id="list">
+	
+</div>
+</body>
+</html>

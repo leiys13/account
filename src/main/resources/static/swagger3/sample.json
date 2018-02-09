@@ -4,5 +4,38 @@
 		"description" : "记账系统接口测试",
 		"version" : "1.0.1",
 		"title" : "记账系统接口"
+	},
+	"basePath" : "/",
+	"paths" : {
+		"/user/{id}" : {
+			"get" : {
+				"parameters" : [{
+					"name" : "id",
+					"in" : "path",
+					"required" : true,
+					"description" : "用户id"
+				}],
+				"responses" : {
+					"200" : {
+						"description" : "获取用户信息成功"
+					}
+				}
+			}
+		},
+		"/register" : {
+			"post" : {
+				"parameters" : [{
+					"name" : "userName",
+					"id" : "body",
+					"required" : true,
+					"description" : "用户名"
+				}, {
+					"name" : "password",
+					"id" : "body",
+					"required" : true,
+					"description" : "密码"
+				}]
+			}
+		}
 	}
 }
