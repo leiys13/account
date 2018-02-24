@@ -1,4 +1,4 @@
-package com.sadasen.account.util;
+package com.sadasen.util;
 
 /**
  * @date 2018年2月3日

@@ -1,4 +1,4 @@
-package com.sadasen.account.util;
+package com.sadasen.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

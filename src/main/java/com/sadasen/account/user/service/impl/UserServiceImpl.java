@@ -8,7 +8,7 @@ import com.sadasen.account.user.dao.UserDao;
 import com.sadasen.account.user.dto.UserDto;
 import com.sadasen.account.user.entity.User;
 import com.sadasen.account.user.service.UserService;
-import com.sadasen.account.util.DateTimeUtil;
+import com.sadasen.util.DateTimeUtil;
 
 /**
  * @date 2018年1月9日
@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private SQLManager sqlManager;
-	
 	@Autowired
 	private UserDao userDao;
 
