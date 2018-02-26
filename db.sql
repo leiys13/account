@@ -11,21 +11,26 @@ alter table sys_user AUTO_INCREMENT=11328156;
 CREATE TABLE account_consume (
 	id bigint(20) primary key AUTO_INCREMENT,
 	name varchar(30) default null,
-	pid bigint(20) default 0,
+	parent_id bigint(20) default 0,
 	user_id bigint(20) default 0,
+	type tinyint(2) default 0,
 	code varchar(200) default null,
 	level tinyint(4) default 0,
 	sort tinyint(4) default 0,
+	hasChild bit default 0,
 	create_time datetime default null
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 
 alter table account_consume AUTO_INCREMENT=11328156;
 
-CREATE TABLE account_method (
+CREATE TABLE account_way (
 	id bigint(20) primary key AUTO_INCREMENT,
-	method varchar(30) default null,
+	name varchar(30) default null,
+	parent_id bigint(20) default 0,
 	user_id bigint(20) default 0,
+	type tinyint(2) default 0,
 	sort tinyint(4) default 0,
+	hasChild bit default 0,
 	create_time datetime default null
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 
@@ -35,8 +40,8 @@ CREATE TABLE account_record (
 	id bigint(20) primary key AUTO_INCREMENT,
 	rdate date default null,
 	user_id bigint(20) default 0,
-	cid bigint(20) default 0,
-	mid bigint(20) default 0,
+	consume_id bigint(20) default 0,
+	way_id bigint(20) default 0,
 	price decimal(20,0) default 0,
 	remark varchar(200) default null,
 	create_time datetime default null
