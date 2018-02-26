@@ -1,19 +1,22 @@
 package com.sadasen.account.index.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import com.sadasen.account.common.BaseController;
 
 /**
  * @date 2018年1月9日
  * @author lei.ys
  * @desc
  */
-@RestController
-public class IndexController {
+@Controller
+public class IndexController extends BaseController {
 
-	@GetMapping("/")
-	public String index(String name) {
-		return "Hello, " + name + "! This is index page. ";
+	@GetMapping("/logout")
+	public String logout() {
+		getRequest().getSession().removeAttribute("user");
+		return "redirect:/page/login";
 	}
 	
 }
