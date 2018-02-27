@@ -12,9 +12,9 @@
 <body>
 	<div data-role="page">
 		<div data-role="header" data-position="fixed">
-			<a href="/record/add">记账</a>
+			<a href="/page/recordAdd">记账</a>
 			<h1>分类</h1>
-			<a href="/user/logout">注销</a>
+			<a href="/logout">注销</a>
 		</div>
 		<div data-role="content">
 		<!-- 
@@ -48,7 +48,7 @@
     			</div>
   			</div>
 		 -->
-		 	<input type="hidden" id="pid" value="0">
+		 	<input type="hidden" id="parentId" value="0">
 		 	<input type="hidden" id="pname" value="分类">
 			<ul data-role="listview" data-filter="true" data-inset="true" id="level-0">
 			</ul>
@@ -75,9 +75,9 @@
 		<div data-role="footer" data-position="fixed" data-id="icmu">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="/index">首页</a></li>
-					<li><a href="/consume/list" class="ui-btn-active ui-state-persist">分类</a></li>
-					<li><a href="/method/list">支出方式</a></li>
+					<li><a href="/page/index">首页</a></li>
+					<li><a href="/page/consumeList" class="ui-btn-active ui-state-persist">分类</a></li>
+					<li><a href="/page/methodList">支出方式</a></li>
 					<li><a href="/index">统计</a></li>
 				</ul>
 			</div>
@@ -85,7 +85,7 @@
 	</div>
 	<script>
 		$(document).ready(function() {
-			listByPid(0, "分类列表");
+			//listByParentId(0, "分类列表");
 			
 			$("#add-button").click(function() {
 				if(!$.trim($("#name").val())) {
@@ -95,12 +95,12 @@
 				$.ajax({
 					url: "/consume/addCheck",
 					type: "post",
-					data: {pid: $("#pid").val(), name: $("#name").val()},
+					data: {parentId: $("#parentId").val(), name: $("#name").val()},
 					dataType: "JSON",
 					success: function(res) {
 						if(res.code==200) {
 							alert("添加成功！");
-							var html = "<li><a href=\"javascript:void(0);\" onclick=\"listByPid('"+res.data.id+"','"+res.data.name+"');\">"+res.data.name+"</a></li>";
+							var html = "<li><a href=\"javascript:void(0);\" onclick=\"listByParentId('"+res.data.id+"','"+res.data.name+"');\">"+res.data.name+"</a></li>";
 							var e = $("#level-0");
 							e.append(html);
 			    			e.listview("refresh");
@@ -117,24 +117,24 @@
 			});
 		});
 		
-		function listByPid(pid, pname) {
+		function listByParentId(parentId, pname) {
 			$.ajax({
-		    	url: "/consume/listByPid",
+		    	url: "/consume/listByParentId",
 		    	type: "post",
-		    	data: {pid : pid},
+		    	data: {parentId : parentId},
 		    	dataType: "json",
 		    	success: function(res) {
 		    		if(200==res.code) {
 		    			var e = $("#level-0");
 		    			var html = "<li data-role='list-divider'>"+pname+"</li>";
 		    			for(var i=0;i<res.data.length;i++) {
-		    				html += "<li><a href=\"javascript:void(0);\" onclick=\"listByPid('"+res.data[i].id+"','"+res.data[i].name+"');\">"+res.data[i].name+"</a></li>";
+		    				html += "<li><a href=\"javascript:void(0);\" onclick=\"listByParentId('"+res.data[i].id+"','"+res.data[i].name+"');\">"+res.data[i].name+"</a></li>";
 		    			}
 		    			e.html(html);
 		    			e.listview("refresh")
-		    			$("#pid").val(pid);
+		    			$("#parentId").val(parentId);
 		    			$("#pname").val(pname);
-		    			if(pid) {
+		    			if(parentId) {
 				    		$("#pname-lable").text(pname);
 		    			}
 		    		} else {

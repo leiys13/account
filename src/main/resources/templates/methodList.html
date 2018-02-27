@@ -12,9 +12,9 @@
 <body>
 	<div data-role="page">
 		<div data-role="header" data-position="fixed">
-			<a href="/record/add">记账</a>
+			<a href="/page/recordAdd">记账</a>
 			<h1>支出方式</h1>
-			<a href="/user/logout">注销</a>
+			<a href="/logout">注销</a>
 		</div>
 		<div data-role="content">
 			<ul data-role="listview" data-filter="true" data-inset="true" id="method-list">
@@ -41,9 +41,9 @@
 		<div data-role="footer" data-position="fixed" data-id="icmu">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="/index">首页</a></li>
-					<li><a href="/consume/list">分类</a></li>
-					<li><a href="/method/list" class="ui-btn-active ui-state-persist">支出方式</a></li>
+					<li><a href="/page/index">首页</a></li>
+					<li><a href="/page/consumeList" data-ajax="false">分类</a></li>
+					<li><a href="/page/methodList" class="ui-btn-active ui-state-persist">支出方式</a></li>
 					<li><a href="/index">统计</a></li>
 				</ul>
 			</div>
@@ -51,7 +51,7 @@
 	</div>
 	<script>
 		$(document).ready(function() {
-			getMethodList();
+			//getMethodList();
 			
 			$("#add-button").click(function() {
 				if(!$.trim($("#method").val())) {
