@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sadasen.account.common.BaseController;
-import com.sadasen.account.common.JsonResult;
 import com.sadasen.account.user.dto.UserDto;
 import com.sadasen.account.user.entity.User;
 import com.sadasen.account.user.service.UserService;
+import com.sadasen.core.common.JsonResult;
 
 /**
  * @date 2018年1月9日

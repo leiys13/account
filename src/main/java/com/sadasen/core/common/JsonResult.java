@@ -1,4 +1,4 @@
-package com.sadasen.account.common;
+package com.sadasen.core.common;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ public class JsonResult implements Serializable {
 	private static final long serialVersionUID = 5884669464054792567L;
 	
 	private Object data;
-	private int code = 200;
+	private int code = Consts.REQUEST_SUCCESS_CODE;
 	private String msg = "";
 	
 	public JsonResult() {

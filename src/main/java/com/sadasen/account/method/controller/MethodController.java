@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sadasen.account.common.JsonResult;
 import com.sadasen.account.method.entity.Method;
 import com.sadasen.account.method.service.MethodService;
+import com.sadasen.core.common.JsonResult;
 
 /**
  * @date 2018年2月6日
