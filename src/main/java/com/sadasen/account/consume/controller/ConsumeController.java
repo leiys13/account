@@ -7,6 +7,7 @@ import com.sadasen.account.common.BaseController;
 import com.sadasen.account.consume.dto.ConsumeDto;
 import com.sadasen.account.consume.entity.Consume;
 import com.sadasen.account.consume.service.ConsumeService;
+import com.sadasen.account.util.Utils;
 import com.sadasen.core.common.Consts;
 import com.sadasen.core.common.JsonResult;
 
@@ -22,9 +23,8 @@ public class ConsumeController extends BaseController {
 	private ConsumeService consumeService;
 	
 	public JsonResult add(ConsumeDto consumeDto) {
-		Consume consume = new Consume();
-		consume.setName(consumeDto.getName());
-		consume.setParentId(consumeDto.getParentId());
+		Consume consume = new Consume(consumeDto);
+		consume.setUserId(Utils.getLoginUserId(getRequest()));
 		consume = consumeService.save(consume);
 		if(null==consume) {
 			return new JsonResult("系统错误！", Consts.REQUEST_FAILURE_CODE);

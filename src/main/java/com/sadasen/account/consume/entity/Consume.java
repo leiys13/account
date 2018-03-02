@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.beetl.sql.core.annotatoin.Table;
 
+import com.sadasen.account.consume.dto.ConsumeDto;
+
 /**
  * @date 2018年2月27日
  * @author lei.ys
@@ -27,6 +29,12 @@ public class Consume implements Serializable {
 	private Date createTime;
 	
 	public Consume() {
+	}
+	
+	public Consume(ConsumeDto consumeDto) {
+		this.name = consumeDto.getName();
+		this.parentId = consumeDto.getParentId();
+		this.type = consumeDto.getType();
 	}
 
 	public long getId() {

@@ -7,6 +7,9 @@ package com.sadasen.core.common;
  */
 public class Consts {
 	
+	// 登录用户保存的键
+	public static final String LOGIN_USER = "loginUser";
+	
 	// ====== 返回状态码
 	// 正常
 	public static final int REQUEST_SUCCESS_CODE = 200;

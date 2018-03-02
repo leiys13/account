@@ -12,5 +12,7 @@ public interface ConsumeService {
 	public Consume save(Consume consume);
 	
 	public Consume findById(long id);
+	
+	public String getMaxCodeByParent(long id);
 
 }
