@@ -50,6 +50,7 @@
 		 -->
 		 	<input type="hidden" id="parentId" value="0">
 		 	<input type="hidden" id="pname" value="分类">
+		 	<input type="hidden" id="type" value="0">
 			<ul data-role="listview" data-filter="true" data-inset="true" id="level-0">
 			</ul>
 			<a href="#myPopupDialog" data-rel="popup" data-position-to="window" data-transition="fade" data-role="button">新增</a>
@@ -95,7 +96,7 @@
 				$.ajax({
 					url: "/consume/addCheck",
 					type: "post",
-					data: {parentId: $("#parentId").val(), name: $("#name").val()},
+					data: {parentId: $("#parentId").val(), name: $("#name").val(), type: $("#type").val())},
 					dataType: "JSON",
 					success: function(res) {
 						if(res.code==200) {

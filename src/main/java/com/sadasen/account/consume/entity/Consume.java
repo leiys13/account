@@ -1,10 +1,10 @@
 package com.sadasen.account.consume.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import org.beetl.sql.core.annotatoin.Table;
 
+import com.sadasen.account.common.BaseBean;
 import com.sadasen.account.consume.dto.ConsumeDto;
 
 /**
@@ -13,9 +13,9 @@ import com.sadasen.account.consume.dto.ConsumeDto;
  * @desc
  */
 @Table(name="account_consume")
-public class Consume implements Serializable {
+public class Consume extends BaseBean {
 	
-	private static final long serialVersionUID = 2522380999564435119L;
+	private static final long serialVersionUID = -4954421296247459637L;
 	
 	private long id;
 	private String name;

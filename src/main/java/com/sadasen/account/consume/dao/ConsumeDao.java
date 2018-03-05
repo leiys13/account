@@ -13,5 +13,7 @@ import com.sadasen.account.consume.entity.Consume;
 public interface ConsumeDao extends BaseMapper<Consume> {
 	
 	public String findMaxCodeByParentId(@Param("type") int type, @Param("parentId") long parentId);
+	
+	public int countByParentId(@Param("parentId") long parentId);
 
 }

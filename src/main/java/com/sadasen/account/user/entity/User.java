@@ -1,10 +1,9 @@
 package com.sadasen.account.user.entity;
 
-import java.io.Serializable;
-
 import org.beetl.sql.core.annotatoin.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sadasen.account.common.BaseBean;
 
 /**
  * @date 2018年1月9日
@@ -12,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @desc  用户信息
  */
 @Table(name="sys_user")
-public class User implements Serializable {
+public class User extends BaseBean {
 	
-	private static final long serialVersionUID = -8423180030227115176L;
+	private static final long serialVersionUID = -8749270123950965746L;
 	
 	private long id;
 	private String userName;

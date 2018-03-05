@@ -1,15 +1,15 @@
 package com.sadasen.account.consume.dto;
 
-import java.io.Serializable;
+import com.sadasen.account.common.BaseBean;
 
 /**
  * @date 2018年2月28日
  * @author lei.ys
  * @desc
  */
-public class ConsumeDto implements Serializable {
+public class ConsumeDto extends BaseBean {
 	
-	private static final long serialVersionUID = 7025389947922077887L;
+	private static final long serialVersionUID = 3952099532133496484L;
 	
 	private long parentId;
 	private String name;
