@@ -21,6 +21,8 @@ import com.sadasen.core.common.JsonResult;
 @RestController
 public class UserController extends BaseController {
 	
+	private static final long serialVersionUID = 1987403284173945339L;
+	
 	@Autowired
 	private UserService userService;
 	

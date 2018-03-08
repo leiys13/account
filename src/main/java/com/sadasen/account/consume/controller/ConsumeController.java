@@ -26,6 +26,8 @@ import com.sadasen.core.common.JsonResult;
 @RequestMapping("/consume")
 public class ConsumeController extends BaseController {
 
+	private static final long serialVersionUID = 4463234828559375642L;
+	
 	@Autowired
 	private ConsumeService consumeService;
 	
