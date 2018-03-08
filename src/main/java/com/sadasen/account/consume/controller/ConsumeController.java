@@ -1,7 +1,12 @@
 package com.sadasen.account.consume.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sadasen.account.common.BaseController;
@@ -17,13 +22,14 @@ import com.sadasen.core.common.JsonResult;
  * @author lei.ys
  * @desc
  */
-@RestController("/consume")
+@RestController
+@RequestMapping("/consume")
 public class ConsumeController extends BaseController {
 
 	@Autowired
 	private ConsumeService consumeService;
 	
-	@PostMapping
+	@PostMapping("/add")
 	public JsonResult add(ConsumeDto consumeDto) {
 		Consume consume = new Consume(consumeDto);
 		consume.setUserId(Utils.getLoginUserId(getRequest()));
@@ -34,6 +40,12 @@ public class ConsumeController extends BaseController {
 			return new JsonResult("请求无效！", Consts.REQUEST_FAILURE_CODE);
 		}
 		return new JsonResult(consume);
+	}
+	
+	@GetMapping("/listByParent/{type}/{parentId}")
+	public JsonResult list(@PathVariable("type") int type, @PathVariable("parentId") long parentId) {
+		Utils.printInfo("list success");
+		return new JsonResult(new ArrayList<>());
 	}
 	
 }

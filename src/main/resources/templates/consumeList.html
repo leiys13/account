@@ -7,6 +7,14 @@
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script>$(document).on("mobileinit",function(){$.mobile.ajaxEnabled=false;});</script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<style type="text/css">
+		#out-type {
+			background : #CCC;
+		}
+		#in-type {
+			background: #EEE;
+		}
+	</style>
 </head>
 
 <body>
@@ -51,6 +59,10 @@
 		 	<input type="hidden" id="parentId" value="0">
 		 	<input type="hidden" id="pname" value="分类">
 		 	<input type="hidden" id="type" value="0">
+		 	<div data-role="controlgroup" data-type="horizontal">
+				<a href="javascript:void(0);" id="out-type" data-role="button">支出</a>
+				<a href="javascript:void(0);" id="in-type" data-role="button">收入</a>
+			</div>
 			<ul data-role="listview" data-filter="true" data-inset="true" id="level-0">
 			</ul>
 			<a href="#myPopupDialog" data-rel="popup" data-position-to="window" data-transition="fade" data-role="button">新增</a>
@@ -86,7 +98,21 @@
 	</div>
 	<script>
 		$(document).ready(function() {
-			//listByParentId(0, "分类列表");
+			listByParentId(0, "分类列表");
+			
+			$("#in-type").click(function() {
+				$("#in-type").css("background", "#CCC");
+				$("#out-type").css("background", "#EEE")
+				$("#type").val(1);
+				listByParentId($("#parentId").val(), $("#pname").val());
+			});
+			
+			$("#out-type").click(function() {
+				$("#in-type").css("background", "#EEE");
+				$("#out-type").css("background", "#CCC")
+				$("#type").val(0);
+				listByParentId($("#parentId").val(), $("#pname").val());
+			});
 			
 			$("#add-button").click(function() {
 				if(!$.trim($("#name").val())) {
@@ -94,9 +120,9 @@
 					return;
 				}
 				$.ajax({
-					url: "/consume/addCheck",
+					url: "/consume/add",
 					type: "post",
-					data: {parentId: $("#parentId").val(), name: $("#name").val(), type: $("#type").val())},
+					data: {parentId: $("#parentId").val(), name: $("#name").val(), type: $("#type").val()},
 					dataType: "JSON",
 					success: function(res) {
 						if(res.code==200) {
@@ -120,9 +146,8 @@
 		
 		function listByParentId(parentId, pname) {
 			$.ajax({
-		    	url: "/consume/listByParentId",
-		    	type: "post",
-		    	data: {parentId : parentId},
+		    	url: "/consume/listByParent/"+$("#type").val()+"/"+parentId,
+		    	type: "get",
 		    	dataType: "json",
 		    	success: function(res) {
 		    		if(200==res.code) {

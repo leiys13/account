@@ -70,12 +70,13 @@ public class ConsumeServiceImpl implements ConsumeService {
 		int sort = consumeDao.countByParentId(consume.getParentId());
 		consume.setSort(sort);
 		
+		consume.setHasChild(0);
 		consume.setCreateTime(new Date());
 		
 		int r = sqlManager.insertTemplate(consume, true);
 		
 		/** 父分类hasChild设置 */
-		if(0==parent.getHasChild()) {
+		if(null!=parent && 0==parent.getHasChild()) {
 			Consume updateObject = new Consume();
 			updateObject.setId(parent.getId());
 			updateObject.setHasChild(1);
