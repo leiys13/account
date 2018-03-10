@@ -12,5 +12,7 @@ public class AccountConsts {
 	 */
 	public static final int IN = 1;
 	public static final int OUT = 0;
+	
+	public static final String LOGIN_USER = "loginUser";
 
 }

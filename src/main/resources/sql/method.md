@@ -2,7 +2,7 @@
 
 用户登录
 
-findToLogin
+maxSort
 ===
 
 	select max(sort) from account_method
