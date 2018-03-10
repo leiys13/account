@@ -10,6 +10,7 @@ import com.sadasen.account.common.BaseController;
 import com.sadasen.account.user.dto.UserDto;
 import com.sadasen.account.user.entity.User;
 import com.sadasen.account.user.service.UserService;
+import com.sadasen.core.common.Consts;
 import com.sadasen.core.common.JsonResult;
 
 /**
@@ -19,6 +20,8 @@ import com.sadasen.core.common.JsonResult;
  */
 @RestController
 public class UserController extends BaseController {
+	
+	private static final long serialVersionUID = 1987403284173945339L;
 	
 	@Autowired
 	private UserService userService;
@@ -39,7 +42,7 @@ public class UserController extends BaseController {
 	public JsonResult login(UserDto userDto) {
 		User user = userService.findToLogin(userDto);
 		if(null!=user) {
-			getRequest().getSession().setAttribute("user", user);
+			getRequest().getSession().setAttribute(Consts.LOGIN_USER, user);
 			return new JsonResult(user);
 		}
 		return new JsonResult("error to register!", 500);

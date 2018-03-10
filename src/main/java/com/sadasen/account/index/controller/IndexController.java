@@ -13,6 +13,8 @@ import com.sadasen.account.common.BaseController;
 @Controller
 public class IndexController extends BaseController {
 
+	private static final long serialVersionUID = 2629139021960416406L;
+
 	@GetMapping("/logout")
 	public String logout() {
 		getRequest().getSession().removeAttribute("user");

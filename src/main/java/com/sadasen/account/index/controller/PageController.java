@@ -17,6 +17,8 @@ import com.sadasen.account.user.entity.User;
 @RequestMapping("/page")
 public class PageController extends BaseController {
 
+	private static final long serialVersionUID = 8878066217307120517L;
+
 	@GetMapping("/{pageName}")
 	public String page(@PathVariable("pageName") String pageName) {
 		User user = (User) getRequest().getSession().getAttribute("user");
