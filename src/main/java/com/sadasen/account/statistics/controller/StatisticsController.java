@@ -23,6 +23,8 @@ import com.sadasen.core.common.JsonResult;
 @RequestMapping("/statistics")
 public class StatisticsController extends BaseController {
 	
+	private static final long serialVersionUID = -4612724393640416703L;
+	
 	@Autowired
 	private StatisticsService statisticsService;
 	
